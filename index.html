@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+  <title>SpaceScan – Website Security Scanner</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="logo">
+      <span class="logo-icon">✦</span>
+      SpaceScan
+    </div>
+
+    <p class="side-label">MENU</p>
+
+    <nav class="sidebar-nav">
+      <a href="#dashboard" class="active">⌂ Dashboard</a>
+      <a href="#scan">⌕ Scan Website</a>
+      <a href="#history">◷ Scan History</a>
+      <a href="#report">⚑ Report a Site</a>
+    </nav>
+
+    <div class="sidebar-scan" id="scan">
+      <h3>Quick Scan</h3>
+      <p>Check a website for suspicious patterns.</p>
+
+      <form class="scan" id="scanForm">
+        <input
+          type="text"
+          id="url"
+          aria-label="Website address"
+          placeholder="https://example.com"
+          autocomplete="off"
+          required
+        >
+
+        <button type="submit" id="scanBtn">
+          Scan Website
+        </button>
+      </form>
+
+      <p class="hint">Try an example:</p>
+
+      <button type="button" class="example-btn"
+        data-url="https://www.wikipedia.org">
+        Wikipedia
+      </button>
+
+      <button type="button" class="example-btn"
+        data-url="http://secure-login-paytm.verify-account.xyz/update">
+        Fake payment link
+      </button>
+
+      <div id="status" role="status" aria-live="polite"></div>
+    </div>
+
+    <div class="sidebar-footer">
+      <span class="online-dot"></span>
+      SpaceScan Security
+      <small>Website analysis platform</small>
+    </div>
+
+  </aside>
+
+
+  <!-- RIGHT MAIN CONTENT -->
+  <main class="main-content" id="dashboard">
+
+    <header class="topbar">
+      <div>
+        <p class="breadcrumb">Workspace / Dashboard</p>
+        <h1>Security Dashboard</h1>
+      </div>
+
+      <div class="profile">
+        <span class="profile-icon">S</span>
+        <span>SpaceScan</span>
+      </div>
+    </header>
+
+
+    <!-- SCAN RESULTS -->
+    <section class="dashboard-section">
+
+      <div class="section-heading">
+        <div>
+          <h2>Website Security Overview</h2>
+          <p>Review your website scanning results.</p>
+        </div>
+      </div>
+
+      <div id="result">
+
+        <!-- RISK SUMMARY -->
+        <div class="summary">
+
+          <div class="gauge">
+            <svg viewBox="0 0 200 110" aria-hidden="true">
+
+              <path
+                d="M20 100 A80 80 0 0 1 180 100"
+                fill="none"
+                stroke="#E3E9F0"
+                stroke-width="16"
+                stroke-linecap="round"
+                pathLength="100"
+              />
+
+              <path
+                id="arc"
+                class="arc"
+                d="M20 100 A80 80 0 0 1 180 100"
+                fill="none"
+                stroke="#17805F"
+                stroke-width="16"
+                stroke-linecap="round"
+                pathLength="100"
+                stroke-dasharray="0 100"
+              />
+
+            </svg>
+
+            <div class="num">
+              <span id="score">0</span>
+              <small>Risk Score</small>
+            </div>
+          </div>
+
+          <div class="verdict">
+            <span class="result-label">SCAN RESULT</span>
+            <h2 id="verdict">Waiting for scan</h2>
+            <p id="verdictText">
+              Enter a website address in the left panel to begin.
+            </p>
+          </div>
+
+        </div>
+
+
+        <!-- SECURITY ANALYSIS CARDS -->
+        <div class="cards" id="cards"></div>
+
+      </div>
+    </section>
+
+
+    <!-- RECENT ACTIVITY -->
+    <section class="history-section" id="history">
+
+      <div class="section-heading">
+        <div>
+          <h2>Recent Scan Activity</h2>
+          <p>Your previous website scans.</p>
+        </div>
+      </div>
+
+      <div id="scanHistory" class="history-panel">
+        <p>No previous scans displayed yet.</p>
+      </div>
+
+    </section>
+
+
+    <!-- REPORT SECTION -->
+    <section class="report" id="report">
+
+      <div class="section-heading">
+        <div>
+          <h2>Community Reports</h2>
+          <p>Help identify suspicious websites.</p>
+        </div>
+      </div>
+
+      <div class="cols">
+
+        <div class="panel">
+
+          <h3>Report a suspicious site</h3>
+
+          <form id="reportForm">
+
+            <input
+              type="text"
+              id="rUrl"
+              aria-label="Suspicious website address"
+              placeholder="Website address"
+              required
+            >
+
+            <select id="rType" aria-label="Type of threat">
+              <option>Phishing / fake login</option>
+              <option>Fake payment link</option>
+              <option>Fake job or recruitment page</option>
+              <option>Impersonates an organisation</option>
+              <option>Other</option>
+            </select>
+
+            <textarea
+              id="rNote"
+              rows="3"
+              aria-label="What happened?"
+              placeholder="What made it look suspicious?"
+            ></textarea>
+
+            <button type="submit">Submit Report</button>
+
+          </form>
+        </div>
+
+        <div class="panel">
+
+          <h3>Recent Reports</h3>
+          <ul id="reports"></ul>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <footer>
+      SpaceScan © 2026 · Website Security Analysis Platform
+    </footer>
+
+  </main>
+
+</div>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>

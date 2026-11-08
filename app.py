@@ -6,6 +6,7 @@ import sqlite3
 import ssl
 from datetime import datetime, timezone
 from urllib.parse import urljoin, urlparse, urlunparse
+from database import db, init_db, save_scan, get_scan_history
 
 import requests
 from bs4 import BeautifulSoup
