@@ -809,3 +809,7 @@ textarea {
         padding: 18px;
     }
 }
+#status.error{
+  color: #ff3333 !important;
+  font-weight: 700;
+}
